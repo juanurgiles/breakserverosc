@@ -67,10 +67,10 @@ private JLabel serialLabel;
 private JButton connectBtn;
 private JButton rootBtn;
 private JTextArea loggingArea;
-private JCheckBox multiClientCB;
+private JCheckBox multiClientCB; 
 private JFileChooser fc;
 
-private boolean isMultiClientEnabled = false;
+private boolean isMultiClientEnabled = true;
 
 private static final int UPDATE_FREQ = 1000;
 private ActionListener listUpdater;
