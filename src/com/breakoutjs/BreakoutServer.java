@@ -28,6 +28,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -72,7 +73,7 @@ private JFileChooser fc;
 
 private boolean isMultiClientEnabled = true;
 
-private static final int UPDATE_FREQ = 1000;
+private static final int UPDATE_FREQ = 3000;
 private ActionListener listUpdater;
 private javax.swing.Timer timer;
 
@@ -206,9 +207,9 @@ CommPortIdentifier portId = (CommPortIdentifier) portList.nextElement();
 if (portId.getPortType() == CommPortIdentifier.PORT_SERIAL) {
 String name = portId.getName();
 // ignore /dev/tty to prevent duplicate serial port listings (/dev/tty and /dev/cu)
-if (!name.startsWith("/dev/tty.")) {
+//if (!name.startsWith("/dev/tty.")) {
 serialPorts.addItem(name);
-}
+//}
 }
 }
 } catch (Exception e) {
@@ -321,7 +322,7 @@ serialPort = (String) serialPorts.getItemAt(0);
 }
 
 bridge = new SerialBridge(netPort, this, webRoot, isMultiClientEnabled);
-
+    JOptionPane.showMessageDialog(null,serialPort);
 bridge.begin(serialPort, 57600);
 
 connectBtn.setText("Disconnect");
@@ -391,6 +392,7 @@ return netPort;
 /**
 * @param args
 */
+
 public static void main(String[] args) {
 
 new BreakoutServer();
